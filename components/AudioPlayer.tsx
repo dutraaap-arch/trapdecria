@@ -6,33 +6,33 @@ export default function AudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
-  function togglePlay() {
-    const audio = audioRef.current;
-    if (!audio) return;
+  const togglePlay = () => {
+    if (!audioRef.current) return;
 
     if (playing) {
-      audio.pause();
-      setPlaying(false);
+      audioRef.current.pause();
     } else {
-      audio.play().then(() => {
-        setPlaying(true);
-      }).catch((err) => {
-        console.log("Erro ao tocar áudio:", err);
-      });
+      audioRef.current.play();
     }
-  }
+
+    setPlaying(!playing);
+  };
 
   return (
-    <div className="flex flex-col items-center gap-4 mt-10">
-
+    <div className="bg-zinc-900 p-6 rounded-2xl w-full max-w-xl mx-auto mt-10 shadow-lg">
+      
       <audio ref={audioRef} src="/track.mp3" />
 
       <button
         onClick={togglePlay}
-        className="bg-purple-600 px-6 py-3 rounded-full text-white"
+        className="bg-white text-black px-6 py-3 rounded-full font-bold"
       >
         {playing ? "Pause" : "Play"}
       </button>
+
+      <p className="text-center mt-4 text-gray-400">
+        Alcash - Track Oficial
+      </p>
 
     </div>
   );

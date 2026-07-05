@@ -7,12 +7,15 @@ export default function Home() {
   return (
     <main className="bg-black min-h-screen text-white">
       <Navbar />
-      <h1 className="text-6xl font-bold text-center mt-20">
+
+      <h1 className="text-5xl font-bold text-center mt-20">
         BocaRica
       </h1>
 
       <Hero />
+
       <AudioPlayer />
+
       <BeatGrid />
     </main>
   );
